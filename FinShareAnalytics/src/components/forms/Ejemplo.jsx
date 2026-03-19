@@ -1,0 +1,2 @@
+// En esta carpeta forms irán validaciones de formularios, componentes relacionados con formularios, etc.
+// Es un espacio para organizar todo lo relacionado con la gestión de formularios en la aplicación FinShare Analytics.

@@ -1,13 +1,21 @@
+
 import { useState } from 'react';
+import ReactIcon from '../../assets/images/ReactIcon.png';
 import Button from '../../components/common/Button';
 import '../../assets/styles/Welcome.css';
+
 
 function Welcome() {
   const [count, setCount] = useState(0);
 
   return (
     <section className="welcome-section">
+
+      <div className="welcome-hero">
+        <img src={ReactIcon} alt="FinShare Logo" className="welcome-logo" />
+      </div>
       <h1 className="welcome-title">¡Bienvenido a FinShare Analytics!</h1>
+
       <p className="welcome-description">
         Tu plataforma integral para el análisis financiero inteligente. 
         Explora datos, genera insights y toma decisiones basadas en información precisa.

@@ -57,3 +57,9 @@
   background: linear-gradient(135deg, var(--accent-bg) 0%, transparent 70%);
   z-index: -1;
 }
+
+.welcome-logo {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 2rem;
+}
