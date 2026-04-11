@@ -18,3 +18,80 @@
   margin-bottom: 2rem;
   line-height: 1.6;
 }
+
+/* --- NUEVAS CLASES PARA LOS GRUPOS --- */
+
+.groups-container {
+  margin-top: 2.5rem;
+}
+
+.groups-title {
+  color: #1d7e6b;
+  margin-bottom: 1.5rem;
+}
+
+/* Mensajes de estado */
+.status-message {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+.status-message.loading { color: #1d7e6b; }
+.status-message.error { color: #e74c3c; font-weight: bold; }
+.status-message.empty { color: #7f8c8d; }
+
+/* Grid de tarjetas */
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  text-align: left; /* Alineamos el texto de las tarjetas a la izquierda */
+}
+
+/* Estilo individual de cada tarjeta */
+.group-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #ffffff;
+  border-left: 5px solid #1d7e6b;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.group-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.group-card-title {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.group-card-description {
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.group-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group-badge {
+  background-color: #e8f5f3;
+  color: #1d7e6b;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.group-members-count {
+  color: #95a5a6;
+  font-size: 0.8rem;
+}

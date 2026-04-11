@@ -1,0 +1,377 @@
+/* src/assets/styles/DetalleGrupo.css */
+
+.detalle-container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #1d7e6b;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.2s;
+}
+
+.btn-back:hover {
+  opacity: 0.8;
+}
+
+.info-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.detalle-title {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 2rem;
+}
+
+.detalle-description {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.detalle-date {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.detalle-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.column-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Lista de Miembros */
+.member-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.member-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.member-name {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.member-role {
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.role-admin {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.role-member {
+  background-color: #ecf0f1;
+  color: #7f8c8d;
+}
+
+.btn-invite {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f8fdfb;
+  border: 1px dashed #1d7e6b;
+  color: #1d7e6b;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn-invite:hover {
+  background-color: #eaf6f3;
+}
+
+/* Gastos */
+.expenses-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.btn-add-expense {
+  background-color: #1d7e6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.btn-add-expense:hover {
+  opacity: 0.9;
+}
+
+.empty-expenses {
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  color: #7f8c8d;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+  .detalle-grid {
+    grid-template-columns: 1fr; /* Pone las columnas una sobre otra en celular */
+  }
+}
+
+.expenses-list-container {
+  margin-top: 1rem;
+}
+
+.expenses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.expense-item {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.expense-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.expense-concept {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.expense-meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+.expense-payer {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.expense-amount-wrapper {
+  text-align: right;
+}
+
+.expense-amount {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1d7e6b;
+  display: block;
+}
+
+.expense-currency {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-weight: normal;
+}
+
+.expense-category-badge {
+  font-size: 0.75rem;
+  background-color: #ecf0f1;
+  padding: 2px 8px;
+  border-radius: 12px;
+  color: #7f8c8d;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.invite-form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.invite-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.btn-confirm-invite {
+  background-color: #1d7e6b;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* --- TARJETA DE BALANCE --- */
+.balance-card {
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 10px solid #95a5a6; /* Gris por defecto */
+    transition: all 0.3s ease;
+}
+
+/* Variaciones de la tarjeta según el saldo */
+.balance-positive {
+    border-left-color: #2ecc71;
+    background-color: #fafffb;
+}
+
+.balance-negative {
+    border-left-color: #e74c3c;
+    background-color: #fffaf9;
+}
+
+.balance-neutral {
+    border-left-color: #95a5a6;
+    background-color: #f9f9f9;
+}
+
+.balance-label {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.balance-amount {
+    margin: 5px 0 0 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.amount-pos { color: #27ae60; }
+.amount-neg { color: #c0392b; }
+
+.balance-status-text {
+    font-weight: bold;
+    color: #95a5a6;
+}
+
+.btn-icon-edit, .btn-icon-delete {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.btn-remove-member {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove-member:hover {
+    background-color: #fdedec;
+}
+
+.member-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Estilos para los botones de acción de gastos */
+.expense-actions {
+    display: flex;
+    gap: 8px;
+    border-left: 1px solid #eee;
+    padding-left: 12px;
+}
+
+.btn-icon-edit, .btn-icon-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.btn-icon-edit { color: #3498db; }
+.btn-icon-delete { color: #e74c3c; }
+
+.btn-icon-edit:hover { background-color: #ebf5fb; }
+.btn-icon-delete:hover { background-color: #fdedec; }
