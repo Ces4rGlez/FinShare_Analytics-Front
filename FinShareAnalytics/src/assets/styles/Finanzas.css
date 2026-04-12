@@ -1,0 +1,279 @@
+/* Finanzas.css */
+.finanzas-section {
+  padding: clamp(2rem, 5vw, 4rem);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.finanzas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.finanzas-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--text-h, #1a2e2b);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Resumen de saldos */
+.finanzas-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.resumen-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-top: 4px solid transparent;
+}
+
+.resumen-card.ingresos { border-top-color: #1d7e6b; }
+.resumen-card.egresos  { border-top-color: #e74c3c; }
+.resumen-card.balance  { border-top-color: #3498db; }
+
+.resumen-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.4rem;
+}
+
+.resumen-monto {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.resumen-card.ingresos .resumen-monto { color: #1d7e6b; }
+.resumen-card.egresos  .resumen-monto { color: #e74c3c; }
+.resumen-card.balance  .resumen-monto { color: #2980b9; }
+
+/* Botón principal */
+.btn-primario {
+  background-color: #1d7e6b;
+  color: white;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.btn-primario:hover {
+  background-color: #16664f;
+  transform: translateY(-1px);
+}
+
+/* Formulario de movimiento */
+.movimiento-form-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  border-left: 5px solid #1d7e6b;
+}
+
+.movimiento-form-titulo {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1d7e6b;
+  margin: 0 0 1.2rem;
+}
+
+.movimiento-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.movimiento-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.movimiento-form label {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.movimiento-form input,
+.movimiento-form select,
+.movimiento-form textarea {
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid #d5e0de;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  background: #f9fbfa;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.movimiento-form input:focus,
+.movimiento-form select:focus,
+.movimiento-form textarea:focus {
+  border-color: #1d7e6b;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(29, 126, 107, 0.1);
+}
+
+.movimiento-form textarea {
+  resize: vertical;
+  min-height: 68px;
+}
+
+.form-full {
+  grid-column: 1 / -1;
+}
+
+.form-acciones {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.btn-cancelar {
+  background: #ecf0f1;
+  color: #7f8c8d;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-cancelar:hover {
+  background-color: #dfe6e9;
+}
+
+/* Lista de movimientos */
+.movimientos-titulo {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1d7e6b;
+  margin: 0 0 1rem;
+}
+
+.movimientos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.movimiento-item {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 1rem;
+}
+
+.movimiento-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.movimiento-item.ingreso { border-left-color: #1d7e6b; }
+.movimiento-item.egreso  { border-left-color: #e74c3c; }
+
+.movimiento-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.movimiento-concepto {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2c3e50;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movimiento-meta {
+  font-size: 0.78rem;
+  color: #95a5a6;
+  margin-top: 2px;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.movimiento-categoria {
+  background: #e8f5f3;
+  color: #1d7e6b;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.movimiento-monto {
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.movimiento-monto.ingreso { color: #1d7e6b; }
+.movimiento-monto.egreso  { color: #e74c3c; }
+
+.btn-eliminar-mov {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #bdc3c7;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.2s, transform 0.2s;
+  display: flex;
+}
+
+.btn-eliminar-mov:hover {
+  color: #e74c3c;
+  transform: scale(1.15);
+}
+
+/* Mensajes de estado */
+.status-message {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+.status-message.loading { color: #1d7e6b; }
+.status-message.error   { color: #e74c3c; font-weight: bold; }
+.status-message.empty   { color: #7f8c8d; }
+
+.form-error {
+  background: #fdecea;
+  color: #c0392b;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.875rem;
+  border-left: 4px solid #e74c3c;
+  grid-column: 1 / -1;
+}

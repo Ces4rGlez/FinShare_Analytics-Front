@@ -1,0 +1,8 @@
+/* Register.css — extiende el mismo sistema de estilos de Login.css */
+@import './Login.css';
+
+.register-note {
+  font-size: 0.78rem;
+  color: #95a5a6;
+  margin-top: 0.1rem;
+}
