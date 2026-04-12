@@ -1,18 +1,35 @@
-import axios from "axios";
-
-// Conexión con el backend de FinShare Analytics para realizar solicitudes API
+import axios from 'axios';
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api"
+  baseURL: 'http://localhost:5000/api',
+  timeout: 15000,
 });
 
+// Request interceptor — auto-attach token from localStorage
+API.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('finshare_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
-// Pega aquí el token que te devolvió Thunder Client
-const tokenTemporal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWQ5ZjU0NGMzOGY2NmM0YTExZmI3MWMiLCJlbWFpbCI6ImNvcnJlb0BlamVtcGxvLmNvbSIsImlhdCI6MTc3NTg5MTc4MCwiZXhwIjoxNzc1OTc4MTgwfQ.J0SbsICIW3cG_5Kh0_0vYq_b7anPRKBaQBYWDxZGnI0";
-
-// Le decimos a Axios que siempre envíe este token en la cabecera de autorización
-if (tokenTemporal) {
-  API.defaults.headers.common["Authorization"] = `Bearer ${tokenTemporal}`;
-}
+// Response interceptor — handle 401 globally
+API.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('finshare_token');
+      // Redirect to login if not already there
+      if (!window.location.pathname.includes('/login')) {
+        window.location.href = '/login';
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default API;

@@ -1,39 +1,28 @@
-const Button = ({ onClick, children, variant = 'primary' }) => {
-  const styles = {
-    primary: { 
-      backgroundColor: '#3da886', 
-      color: 'white', 
-      padding: '12px 24px', 
-      border: 'none', 
-      borderRadius: '8px', 
-      cursor: 'pointer',
-      fontSize: '1rem',
-      fontWeight: 'bold',
-      transition: 'all 0.2s',
-      margin: '0 0.5rem'
-    },
-    secondary: {
-      backgroundColor: 'transparent',
-      color: 'var(--text-h)',
-      padding: '12px 24px',
-      border: '2px solid var(--accent-border)',
-      borderRadius: '8px',
-      cursor: 'pointer',
-      fontSize: '1rem',
-      fontWeight: 500,
-      transition: 'all 0.2s'
-    }
-  };
+import './Button.css';
 
+export default function Button({
+  children,
+  variant = 'primary',
+  size = 'md',
+  loading = false,
+  icon: Icon,
+  fullWidth = false,
+  ...props
+}) {
   return (
-    <button 
-      style={styles[variant]} 
-      onClick={onClick}
+    <button
+      className={`btn btn-${variant} btn-${size} ${fullWidth ? 'btn-full' : ''} ${loading ? 'btn-loading' : ''}`}
+      disabled={loading || props.disabled}
+      {...props}
     >
-      {children}
+      {loading ? (
+        <span className="btn-spinner" />
+      ) : (
+        <>
+          {Icon && <Icon className="btn-icon" />}
+          {children}
+        </>
+      )}
     </button>
   );
-};
-
-export default Button;
-
+}

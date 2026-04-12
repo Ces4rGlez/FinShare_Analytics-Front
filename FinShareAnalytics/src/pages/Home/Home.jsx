@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import grupoService from '../../services/grupoService';
 import CrearGrupoForm from '../../components/forms/CrearGrupoForm';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
-import '../../assets/styles/Home.css';
+import './Home.css';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const [grupos, setGrupos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
-  
-  const [mostrarFormulario, setMostrarFormulario] = useState(false); 
+
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [grupoEditando, setGrupoEditando] = useState(null);
 
   const navigate = useNavigate();
@@ -60,100 +60,99 @@ function Home() {
 
   return (
     <section className="home-section">
-      <h1 className="home-title">Dashboard Principal</h1>
-      <p className="home-description">
-        Bienvenido al panel de control de FinShare Analytics. 
-        Aquí podrás visualizar métricas financieras, gráficos y reportes en tiempo real.
-      </p>
+      <div className="home-header animate-fade-in">
+        <div className="home-header-content">
+          <h1 className="home-title">Bienvenido a FinShare</h1>
+          <p className="home-description">
+            Gestiona tus grupos, analiza riesgos y simula escenarios financieros con inteligencia artificial.
+          </p>
+        </div>
+        <button
+          onClick={abrirFormularioCreacion}
+          className="btn btn-primary"
+          style={{ position: 'relative', zIndex: 2 }}
+        >
+          {mostrarFormulario && !grupoEditando ? 'Cancelar' : '+ Nuevo Grupo'}
+        </button>
+      </div>
 
       <div className="groups-container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 className="groups-title" style={{ margin: 0 }}>Tus Grupos Activos</h2>
-          
-          <button 
-            onClick={abrirFormularioCreacion}
-            style={{ 
-              backgroundColor: '#1d7e6b', 
-              color: 'white', 
-              border: 'none', 
-              padding: '8px 16px', 
-              borderRadius: '6px', 
-              cursor: 'pointer', 
-              fontWeight: 'bold' 
-            }}
-          >
-            {mostrarFormulario && !grupoEditando ? 'Cancelar' : '+ Nuevo Grupo'}
-          </button>
+        <div className="groups-header-row animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <h2 className="groups-title">Tus Grupos Activos</h2>
         </div>
 
         {mostrarFormulario && (
-          <CrearGrupoForm 
-            grupoAEditar={grupoEditando}
-            onGrupoGuardado={handleGrupoGuardado} 
-            onCancelar={() => {
-              setMostrarFormulario(false);
-              setGrupoEditando(null);
-            }} 
-          />
+          <div className="animate-scale-in" style={{ marginBottom: 'var(--space-8)' }}>
+            <CrearGrupoForm
+              grupoAEditar={grupoEditando}
+              onGrupoGuardado={handleGrupoGuardado}
+              onCancelar={() => {
+                setMostrarFormulario(false);
+                setGrupoEditando(null);
+              }}
+            />
+          </div>
+        )}
+
+        {cargando && (
+          <div className="groups-grid">
+            {[1,2,3].map(i => <div key={i} className="skeleton" style={{ height: 180, borderRadius: 24 }} />)}
+          </div>
         )}
         
-        {cargando && <p className="status-message loading">Cargando información financiera...</p>}
         {error && <p className="status-message error">{error}</p>}
+        
         {!cargando && !error && grupos.length === 0 && (
-          <p className="status-message empty">No tienes grupos creados aún. ¡Es momento de crear el primero!</p>
+          <div className="card empty-state animate-fade-in" style={{ padding: 'var(--space-12) 0' }}>
+            <p className="empty-state-text">No tienes grupos creados aún. ¡Es momento de crear el primero!</p>
+          </div>
         )}
 
         {!cargando && !error && grupos.length > 0 && (
           <div className="groups-grid">
-            {grupos.map((grupo) => (
-              <div 
-                key={grupo._id} 
-                className="group-card"
+            {grupos.map((grupo, idx) => (
+              <div
+                key={grupo._id}
+                className="group-card animate-fade-in"
                 onClick={() => navigate(`/grupo/${grupo._id}`)}
-                style={{ cursor: 'pointer' }}
+                style={{ animationDelay: `${0.1 + idx * 0.05}s` }}
               >
-                <h3 className="group-card-title">{grupo.name}</h3>
-                <p className="group-card-description">{grupo.description}</p>
-                
-                <div className="group-card-footer" style={{ borderTop: '1px solid #eee', paddingTop: '15px', marginTop: '10px' }}>
-                  
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                    <span className="group-badge">{grupo.groupType}</span>
-                    <span className="group-members-count">
-                      {grupo.members?.length || 0} miembros
-                    </span>
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                    <button 
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <h3 className="group-card-title">{grupo.name}</h3>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <button
                       onClick={(e) => {
                         e.stopPropagation();
                         setGrupoEditando(grupo);
                         setMostrarFormulario(true);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      title="Editar grupo"
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', transition: 'transform 0.2s', display: 'flex' }}
-                      onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                      onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                      className="btn-tiny"
+                      title="Editar"
                     >
-                      <PencilSquareIcon style={{ width: '22px', height: '22px', color: '#3498db' }} />
+                      <PencilSquareIcon style={{ width: '16px' }} />
                     </button>
-                    
-                    <button 
+                    <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleEliminarGrupo(grupo._id, grupo.name);
                       }}
-                      title="Eliminar grupo"
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', transition: 'transform 0.2s', display: 'flex' }}
-                      onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                      onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                      className="btn-tiny"
+                      style={{ color: 'var(--color-danger)' }}
+                      title="Eliminar"
                     >
-                      <TrashIcon style={{ width: '22px', height: '22px', color: '#e74c3c' }} />
+                      <TrashIcon style={{ width: '16px' }} />
                     </button>
                   </div>
+                </div>
 
+                <p className="group-card-description">{grupo.description}</p>
+
+                <div className="group-card-footer">
+                  <span className="group-badge">{grupo.groupType}</span>
+                  <span className="group-members-count">
+                    {grupo.members?.length || 0} miembros
+                  </span>
                 </div>
               </div>
             ))}

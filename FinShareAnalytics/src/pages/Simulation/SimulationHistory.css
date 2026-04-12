@@ -1,0 +1,230 @@
+/* ── Simulation History - Premium Flat SaaS Edition ── */
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* History Card */
+.history-card {
+  background: white;
+  border: 1px solid #F1F5F9;
+  border-radius: 20px;
+  padding: 24px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.history-card:hover {
+  transform: translateY(-4px);
+  border-color: #CBD5E1;
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
+}
+
+.hc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.hc-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+/* Type colors logic managed in JSX via style/classes if desired, but flat pastels by default */
+.hc-icon-wrapper {
+  background: #F0FDF4;
+  color: #10B981;
+}
+
+.hc-date {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #F8FAFC;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.hc-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.hc-desc {
+  font-size: 0.875rem;
+  color: #64748B;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.hc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.hc-impact-badge {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.impact-pos { background: #ECFDF5; color: #059669; }
+.impact-neg { background: #FEF2F2; color: #DC2626; }
+.impact-neu { background: #F8FAFC; color: #475569; }
+
+.hc-delete-btn {
+  width: 32px;
+  height: 32px;
+  background: #F8FAFC;
+  border: none;
+  border-radius: 10px;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hc-delete-btn:hover {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+/* Modal Content Styles for Simulation Details */
+.modal-sim-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ms-header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.ms-title {
+  font-size: 1.5rem;
+  font-weight: 850;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+.ms-date {
+  font-size: 0.875rem;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.ms-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.ms-metric-card {
+  padding: 16px;
+  background: #F8FAFC;
+  border: 1px solid #F1F5F9;
+  border-radius: 16px;
+}
+
+.ms-m-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.ms-m-val {
+  font-size: 1.5rem;
+  font-weight: 850;
+  color: #0F172A;
+}
+.ms-m-val.danger { color: #DC2626; }
+.ms-m-val.warning { color: #D97706; }
+.ms-m-val.success { color: #059669; }
+
+.ms-insight-box {
+  background: #F0FDF4;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #DCFCE7;
+}
+
+.ms-insight-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #059669;
+  margin-bottom: 12px;
+}
+
+.ms-insight-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #064E3B;
+  margin: 0;
+}
+
+.ms-params-box {
+  background: white;
+  border: 1px dashed #CBD5E1;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.ms-params-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.ms-params-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ms-param-item {
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ms-param-item .key { color: #64748B; }
+.ms-param-item .val { font-weight: 700; color: #0F172A; }

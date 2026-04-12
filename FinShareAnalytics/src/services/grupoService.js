@@ -44,6 +44,11 @@ const grupoService = {
     const response = await api.delete(`/groups/${groupId}/members/${userId}`);
     return response.data.data || response.data;
   },
+
+  obtenerDesglose: async (groupId) => {
+    const response = await api.get(`/groups/${groupId}/breakdown`);
+    return response.data.data || response.data;
+  },
 };
 
 

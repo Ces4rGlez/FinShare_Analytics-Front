@@ -26,6 +26,16 @@ const expenseService = {
   eliminar: async (expenseId) => {
     const response = await api.delete(`/expenses/${expenseId}`);
     return response.data;
+  },
+
+  liquidar: async (expenseId, userId, amountPaid) => {
+    const response = await api.post(`/expenses/${expenseId}/settle`, { userId, amountPaid });
+    return response.data.data || response.data;
+  },
+
+  obtenerPorId: async (expenseId) => {
+    const response = await api.get(`/expenses/${expenseId}`);
+    return response.data.data || response.data;
   }
 };
 

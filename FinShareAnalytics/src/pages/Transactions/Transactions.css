@@ -1,0 +1,191 @@
+/* ── Transactions Page ── */
+.tx-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.tx-summary-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.tx-summary-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.tx-summary-balance {
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 3px solid var(--color-primary);
+}
+
+.tx-sum-label {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.tx-sum-val {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.tx-sum-val.pos { color: var(--color-success); }
+.tx-sum-val.neg { color: var(--color-danger); }
+
+/* Filter bar */
+.tx-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.tx-filter-btn {
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tx-filter-btn:hover { border-color: var(--color-primary); color: var(--color-text-primary); }
+.tx-filter-btn.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+
+/* Full list */
+.tx-full-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tx-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+.tx-row:last-child { border-bottom: none; }
+.tx-row:hover { background: var(--color-surface-2); }
+
+.tx-type-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-income  { background: var(--color-success); }
+.dot-expense { background: var(--color-danger); }
+
+.tx-row-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tx-row:has(.dot-income) .tx-row-icon  { background: var(--color-success-bg); color: var(--color-success); }
+.tx-row:has(.dot-expense) .tx-row-icon { background: var(--color-danger-bg);  color: var(--color-danger); }
+
+.tx-row-info { flex: 1; min-width: 0; }
+
+.tx-row-concept {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tx-row-meta {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: 2px;
+}
+
+.tx-row-cat {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+}
+
+.tx-row-date {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.tx-row-amount {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.tx-row-amount.pos { color: var(--color-success); }
+.tx-row-amount.neg { color: var(--color-danger); }
+
+/* Type toggle */
+.tx-type-toggle {
+  display: flex;
+  gap: var(--space-2);
+  padding: 4px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+}
+
+.tx-type-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: transparent;
+}
+
+.tx-type-btn.active-expense {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+.tx-type-btn.active-income {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+@media (max-width: 768px) {
+  .tx-summary-row { grid-template-columns: 1fr; }
+}
