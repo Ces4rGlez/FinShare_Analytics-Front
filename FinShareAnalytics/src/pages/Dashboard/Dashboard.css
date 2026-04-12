@@ -1,0 +1,181 @@
+/* ── Dashboard - Premium SaaS Flat Edition ── */
+
+.dashboard-chart-card {
+  padding: 32px;
+  background: white;
+  border: 1px solid #F1F5F9;
+  border-radius: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.chart-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.chart-period {
+  font-size: 0.75rem;
+  color: #64748B;
+  background: #F8FAFC;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid #E2E8F0;
+}
+
+.btn-link {
+  background: #F0FDF4;
+  border: 1px solid #DCFCE7;
+  color: #059669;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+.btn-link:hover { 
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  transform: translateY(-1px);
+}
+
+/* Custom Tooltip */
+.chart-tooltip {
+  background: white;
+  border: 1px solid #F1F5F9;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+}
+
+.chart-tooltip-label {
+  font-size: 0.7rem;
+  color: #94A3B8;
+  margin-bottom: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.chart-tooltip-value {
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 4px 0;
+}
+
+/* Pending Summary */
+.pending-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pending-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+}
+
+/* Pastel backgrounds for pending items */
+.pending-stat:nth-child(1) { background: #FEF2F2; border-color: #FEE2E2; }
+.pending-stat:nth-child(2) { background: #F0FDF4; border-color: #DCFCE7; }
+.pending-stat:nth-child(3) { background: #F8FAFC; border-color: #F1F5F9; }
+
+.pending-label {
+  font-size: 0.875rem;
+  color: #475569;
+  font-weight: 750;
+}
+
+.pending-val {
+  font-size: 1.125rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+
+.pending-val.pos { color: #059669; }
+.pending-val.neg { color: #DC2626; }
+
+/* Group Mini List */
+.group-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.group-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #F1F5F9;
+  border-radius: 16px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group-mini-card:hover { 
+  border-color: #CBD5E1;
+  background: #F8FAFC;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.group-mini-avatar {
+  width: 48px;
+  height: 48px;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #059669;
+  flex-shrink: 0;
+}
+
+.group-mini-info {
+  flex: 1; 
+  min-width: 0; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 4px; 
+}
+
+.group-mini-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+}
+
+.group-mini-sub {
+  font-size: 0.8rem;
+  color: #64748B;
+  font-weight: 650;
+  margin: 0;
+}
+
+/* Base override for any left border injected by common classes */
+.card, .card-glass, .dashboard-chart-card, .info-card {
+  border-left: none !important;
+}

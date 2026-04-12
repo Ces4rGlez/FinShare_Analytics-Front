@@ -1,0 +1,182 @@
+/* ── Login Page —— Professional SaaS Edition ── */
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--color-surface);
+}
+
+/* ── Left Hero Side ── */
+.login-hero {
+  background: #568676;
+  /* Solid Light Slate */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--space-12);
+}
+
+.login-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  text-align: center;
+}
+
+.login-hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-8) auto;
+}
+
+.login-hero-title {
+  font-size: 3.5rem;
+  font-weight: 850;
+  color: #F1F5F9;
+  margin-bottom: 0;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+/* ── Right Form Panel ── */
+.login-form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: #F8FAFC;
+}
+
+.login-form-box {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 48px;
+  border-radius: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+}
+
+/* Tabs as Pills */
+.login-tabs {
+  display: flex;
+  background: #F1F5F9;
+  border-radius: 14px;
+  padding: 6px;
+  margin-bottom: var(--space-8);
+}
+
+.login-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #64748B;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-tab.active {
+  background: white;
+  color: #0F172A;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-password-wrap {
+  position: relative;
+}
+
+.input-eye-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #94A3B8;
+  cursor: pointer;
+  display: flex;
+  padding: 4px;
+}
+
+/* Strength Meter */
+.pwd-strength-wrap {
+  margin-top: 12px;
+}
+
+.pwd-strength-bars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.pwd-strength-bar {
+  height: 4px;
+  flex: 1;
+  border-radius: 4px;
+  background: #BDC3C7;
+}
+
+.pwd-strength-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Switch Text */
+.login-switch {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #F1F5F9;
+  font-size: 0.875rem;
+  color: #64748B;
+}
+
+.login-switch-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-hero {
+    display: none;
+  }
+
+  .login-form-panel {
+    background: white;
+  }
+
+  .login-form-box {
+    box-shadow: none;
+    border: none;
+    padding: 24px;
+  }
+}

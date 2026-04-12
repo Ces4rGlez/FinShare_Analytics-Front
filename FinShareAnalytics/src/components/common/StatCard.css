@@ -1,0 +1,91 @@
+/* ── StatCard ── */
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  animation: fadeIn 0.4s ease both;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-card-title {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-card-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon-primary { background: var(--color-primary-glow); }
+.stat-icon-danger  { background: var(--color-danger-bg); }
+.stat-icon-warning { background: var(--color-warning-bg); }
+.stat-icon-info    { background: var(--color-info-bg); }
+
+.stat-card-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.stat-icon-primary .stat-card-icon { color: var(--color-primary); }
+.stat-icon-danger  .stat-card-icon { color: var(--color-danger); }
+.stat-icon-warning .stat-card-icon { color: var(--color-warning); }
+.stat-icon-info    .stat-card-icon { color: var(--color-info); }
+
+.stat-card-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.stat-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.stat-card-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.stat-card-trend {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.trend-up   { background: var(--color-success-bg); color: var(--color-success); }
+.trend-down { background: var(--color-danger-bg);  color: var(--color-danger); }
+
+/* Flat Card Style - No Left Borders */
+.stat-card-primary { border-color: #F1F5F9; }
+.stat-card-danger  { border-color: #F1F5F9; }
+.stat-card-warning { border-color: #F1F5F9; }
+.stat-card-info    { border-color: #F1F5F9; }

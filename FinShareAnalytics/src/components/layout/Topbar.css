@@ -1,0 +1,112 @@
+/* ── Topbar ── */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  height: var(--topbar-height);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-8);
+  z-index: 90;
+  transition: left var(--transition-base);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.topbar-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.topbar-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.topbar-greeting {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin: 4px 0 0 0;
+  font-weight: 500;
+}
+
+.topbar-greeting strong {
+  color: var(--color-primary-dark);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.topbar-user-info {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .topbar-user-info {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--color-border);
+    padding-right: var(--space-4);
+    margin-right: calc(var(--space-4) * -1); /* Counteracts the gap in parent slightly or just provides space */
+  }
+}
+
+.topbar-user-email {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.topbar-avatar {
+  width: 40px;
+  height: 40px;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #059669;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .topbar {
+    left: 0;
+    padding: 0 var(--space-4);
+  }
+
+  .topbar-menu-btn {
+    display: flex;
+  }
+}
