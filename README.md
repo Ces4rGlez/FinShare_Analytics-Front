@@ -1,207 +1,96 @@
-# FinShare Analytics - Plataforma de Gestión Financiera
+<div align="center">
+  <img src="https://img.icons8.com/plasticine/100/000000/react.png" alt="React Logo"/>
+  <img src="https://img.icons8.com/color/96/000000/javascript--v1.png" alt="JS Logo"/>
+  <img src="https://img.icons8.com/fluency/96/css3.png" alt="CSS Logo"/>
+  
+  <h1>FinShare Analytics - Frontend </h1>
+  
+  <p>
+    <strong>El cliente interactivo y analítico para la gestión inteligente de tus finanzas</strong>
+  </p>
 
-FinShare Analytics es una aplicación SaaS premium diseñada para la gestión de finanzas compartidas, análisis de riesgo de insolvencia y simulación de escenarios financieros mediante Inteligencia Artificial.
+  [![React](https://img.shields.io/badge/React-18.x-61DAFB.svg?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
+  [![Vite](https://img.shields.io/badge/Vite-Build_Tool-646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+</div>
 
----
+<br/>
 
-##  Despliegue del Frontend
-
-La parte del cliente está construida con **React + Vite** y utiliza **Vanilla CSS** para un diseño minimalista y moderno.
-
-### Pasos para iniciar:
-
-1. **Navegar a la carpeta del proyecto:**
-   ```bash
-   cd FinShareAnalytics
-   ```
-
-2. **Instalar dependencias:**
-   ```bash
-   npm install
-   ```
-
-3. **Iniciar servidor de desarrollo:**
-   ```bash
-   npm run dev
-   ```
-   *El frontend estará disponible por defecto en `http://localhost:5173`.*
-
-4. **Construir para producción (Opcional):**
-   ```bash
-   npm run build
-   ```
+Este repositorio contiene el **Frontend (Interfaz de Usuario)** de **FinShare Analytics**. Ha sido diseñado bajo una arquitectura moderna utilizando las últimas características funcionales de **React**, empaquetado ultra-rápido gracias a **Vite**, y con un diseño estelar, profesional y estilo *SaaS* usando CSS avanzado y librerías UI de alto impacto.
 
 ---
 
-##  Configuración de la Base de Datos (MongoDB)
+##  Módulos Destacados
 
-El proyecto utiliza **MongoDB** como base de datos. A continuación se detallan las colecciones, esquemas y validadores necesarios para el correcto funcionamiento del backend.
+*    **Dashboard Administrativo:** Vista global del estado financiero, tarjetas de resumen con indicadores de rendimiento (KPIs).
+*    **Centro de Simulaciones:** Panel dinámico para correr escenarios económicos del tipo *"Qué pasaría si..."*, evaluando impactos de nuevos gastos.
+*    **Análisis de Riesgo:** Indicadores en tiempo real que miden la liquidez y capacidad de pago para cuidar el bienestar de los ingresos.
+*    **Finanzas Grupales:** Repartición inteligente de gastos y administración de cuentas colaborativas.
 
-### 1. Inicialización
-```javascript
-use finshare_db;
-```
+---
 
-### 2. Colección: `users`
-Almacena la información de perfil, finanzas personales y resúmenes de riesgo.
+##  Principios de Diseño
 
-```javascript
-db.createCollection("users", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      required: ["fullName", "email", "passwordHash", "isActive", "createdAt", "updatedAt"],
-      properties: {
-        fullName:      { bsonType: "string" },
-        email:         { bsonType: "string" },
-        passwordHash:  { bsonType: "string" },
-        phone:         { bsonType: ["string", "null"] },
-        isActive:      { bsonType: "bool" },
-        createdAt:     { bsonType: "date" },
-        updatedAt:     { bsonType: "date" },
-        finance: {
-          bsonType: "object",
-          properties: {
-            monthlyIncome:     { bsonType: "number" },
-            fixedExpenses:     { bsonType: "number" },
-            variableExpenses:  { bsonType: "number" },
-            savings:           { bsonType: "number" },
-            incomeStability:   { enum: ["stable", "variable", "freelance"] },
-            updatedAt:         { bsonType: "date" }
-          }
-        },
-        debts: {
-          bsonType: "array",
-          items: {
-            bsonType: "object",
-            properties: {
-              creditor:        { bsonType: "string" },
-              totalAmount:     { bsonType: "number" },
-              remainingAmount: { bsonType: "number" },
-              monthlyPayment:  { bsonType: "number" },
-              debtType:        { enum: ["credit", "loan", "mortgage", "other"] },
-              isActive:        { bsonType: "bool" }
-            }
-          }
-        },
-        lastRiskReport: {
-          bsonType: "object",
-          properties: {
-            debtIndex:           { bsonType: "number" },
-            savingsCapacity:     { bsonType: "number" },
-            emergencyFundMonths: { bsonType: "number" },
-            riskScore:           { bsonType: "number" },
-            riskLevel:           { enum: ["low", "medium", "high"] },
-            generatedAt:         { bsonType: "date" }
-          }
-        }
-      }
-    }
-  }
-});
+El apartado visual del proyecto se enfoca en ofrecer una experiencia de usuario Premium e intuitiva:
+*   Temática limpia, flat y minimalista estilo *SaaS Moderno*.
+*   Tipografías modernas para mejorar la lectura de los datos.
+*   Componentes funcionales altamente aislados para ser reutilizables (Tarjetas de estadísticas, Barras de Progreso, Modales).
 
-// Índices
-db.users.createIndex({ email: 1 }, { unique: true });
-```
+---
 
-### 3. Colección: `groups`
-Gestiona los grupos de gastos compartidos y sus analíticas de estabilidad.
+##  Estructura del Código
 
-```javascript
-db.createCollection("groups", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      required: ["name", "groupType", "ownerId", "isActive", "createdAt", "updatedAt"],
-      properties: {
-        name:        { bsonType: "string" },
-        description: { bsonType: "string" },
-        groupType:   { enum: ["roommates", "travel", "project", "other"] },
-        ownerId:     { bsonType: "objectId" },
-        isActive:    { bsonType: "bool" },
-        createdAt:   { bsonType: "date" },
-        updatedAt:   { bsonType: "date" },
-        members: {
-          bsonType: "array",
-          items: {
-            bsonType: "object",
-            properties: {
-              userId:      { bsonType: "objectId" },
-              displayName: { bsonType: "string" },
-              role:        { enum: ["admin", "member"] },
-              joinedAt:    { bsonType: "date" },
-              isActive:    { bsonType: "bool" }
-            }
-          }
-        },
-        analytics: {
-          bsonType: "object",
-          properties: {
-            stabilityIndex:      { bsonType: "number" },
-            conflictRiskLevel:   { enum: ["low", "medium", "high"] },
-            contributionVariance:{ bsonType: "number" },
-            dominantPayerId:     { bsonType: ["objectId", "null"] },
-            calculatedAt:        { bsonType: "date" }
-          }
-        }
-      }
-    }
-  }
-});
-
-// Índices
-db.groups.createIndex({ ownerId: 1 });
-db.groups.createIndex({ "members.userId": 1 });
-```
-
-### 4. Colección: `simulations`
-Almacena los resultados de las simulaciones de escenarios críticos.
-
-```javascript
-db.createCollection("simulations", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      required: ["createdBy", "scenarioType", "createdAt", "updatedAt"],
-      properties: {
-        createdBy:     { bsonType: "objectId" },
-        targetGroupId: { bsonType: ["objectId", "null"] },
-        scenarioType:  { enum: ["job_loss", "rent_increase", "member_default", "expense_spike", "income_cut"] },
-        description:   { bsonType: "string" },
-        parameters:    { bsonType: "object" },
-        createdAt:     { bsonType: "date" },
-        updatedAt:     { bsonType: "date" },
-        result: {
-          bsonType: "object",
-          properties: {
-            riskDelta:           { bsonType: "number" },
-            stabilityDelta:      { bsonType: "number" },
-            conflictProbability: { bsonType: "number" },
-            affectedMembers: {
-              bsonType: "array",
-              items: { bsonType: "objectId" }
-            },
-            recommendation: { bsonType: "string" },
-            generatedAt:    { bsonType: "date" }
-          }
-        }
-      }
-    }
-  }
-});
-
-// Índices
-db.simulations.createIndex({ createdBy: 1 });
-db.simulations.createIndex({ targetGroupId: 1 });
+```text
+ FinShareAnalytics
+ ┣  src
+ ┃ ┣  assets         # Imágenes, Íconos y utilerías multimedia
+ ┃ ┣  components     # Componentes visuales genéricos y reutilizables
+ ┃ ┣  contexts       # Almacenamiento Global de Estados (Autenticación)
+ ┃ ┣  pages          # Vistas principales (Risk, Dashboard, Groups, etc.)
+ ┃ ┣  services       # Conexiones Fetch/Axios a la API Backend
+ ┃ ┗  main.jsx       # Punto de montaje central de React
+ ┣  package.json     # Metadatos del proyecto y Scripts
+ ┗  vite.config.js   # Ajustes del compilador de Vite
 ```
 
 ---
 
-##  Tecnologías Utilizadas
+##  Instalación y Uso Local
 
-- **Frontend:** React, Vite, Vanilla CSS, Heroicons, Recharts.
-- **Backend:** Flask (Python), MongoDB.
-- **IA:** Integración de analíticas predictivas para estabilidad financiera.
+Sigue estos pasos para arrancar el entorno web en tu navegador:
 
----
-© 2026 FinShare Analytics - Sistema de Finanzas Compartidas e Inteligentes.
+### 1. Prerrequisitos
+Deberás tener instalado en tu computadora:
+*   [Node.js](https://nodejs.org/) (Incluye el gestor de paquetes `npm`).
+
+### 2. Instalación de Dependencias
+
+Abre una terminal apuntando a esta misma ruta (`FinShareAnalytics/`) y ejecuta la descarga de paquetes:
+
+```bash
+# Instalar los paquetes definidos y dependencias
+npm install
+```
+
+### 3. Configuración de Entorno (`.env`)
+
+Revisa o crea un archivo `.env` que apunte a la ruta de tu API backend para asegurar el correcto consumo de servicios:
+
+```env
+# Ejemplo apuntando al servidor de tu propio PC
+VITE_API_URL=http://localhost:5000/api
+```
+
+### 4. Lanzar el Entorno de Trabajo
+
+Ejecuta este comando para levantar el servidor web:
+
+```bash
+npm run dev
+```
+
+>  Consola te mostrará un enlace local (Usualmente el servidor arranca en `http://localhost:5173/`). Abre ese enlace para utilizar la aplicación.
+
+<br/>
+<div align="center">
+  <i>Construido con dedicación para FinShare Analytics - Chávez Piñón Santiago Ronaldo - González Ávalos César Fernando - Torres Pérez Leonel Alejandro. </i>
+</div>
